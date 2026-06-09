@@ -9,38 +9,231 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as RoommatesRouteImport } from './routes/roommates'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as OwnerRouteImport } from './routes/owner'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as MessagesRouteImport } from './routes/messages'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OwnerNewRouteImport } from './routes/owner.new'
+import { Route as OwnerListingsRouteImport } from './routes/owner.listings'
+import { Route as MessagesIdRouteImport } from './routes/messages.$id'
+import { Route as ListingsIdRouteImport } from './routes/listings.$id'
 
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoommatesRoute = RoommatesRouteImport.update({
+  id: '/roommates',
+  path: '/roommates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OwnerRoute = OwnerRouteImport.update({
+  id: '/owner',
+  path: '/owner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MessagesRoute = MessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OwnerNewRoute = OwnerNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => OwnerRoute,
+} as any)
+const OwnerListingsRoute = OwnerListingsRouteImport.update({
+  id: '/listings',
+  path: '/listings',
+  getParentRoute: () => OwnerRoute,
+} as any)
+const MessagesIdRoute = MessagesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => MessagesRoute,
+} as any)
+const ListingsIdRoute = ListingsIdRouteImport.update({
+  id: '/listings/$id',
+  path: '/listings/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/messages': typeof MessagesRouteWithChildren
+  '/notifications': typeof NotificationsRoute
+  '/owner': typeof OwnerRouteWithChildren
+  '/profile': typeof ProfileRoute
+  '/roommates': typeof RoommatesRoute
+  '/search': typeof SearchRoute
+  '/listings/$id': typeof ListingsIdRoute
+  '/messages/$id': typeof MessagesIdRoute
+  '/owner/listings': typeof OwnerListingsRoute
+  '/owner/new': typeof OwnerNewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/messages': typeof MessagesRouteWithChildren
+  '/notifications': typeof NotificationsRoute
+  '/owner': typeof OwnerRouteWithChildren
+  '/profile': typeof ProfileRoute
+  '/roommates': typeof RoommatesRoute
+  '/search': typeof SearchRoute
+  '/listings/$id': typeof ListingsIdRoute
+  '/messages/$id': typeof MessagesIdRoute
+  '/owner/listings': typeof OwnerListingsRoute
+  '/owner/new': typeof OwnerNewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/messages': typeof MessagesRouteWithChildren
+  '/notifications': typeof NotificationsRoute
+  '/owner': typeof OwnerRouteWithChildren
+  '/profile': typeof ProfileRoute
+  '/roommates': typeof RoommatesRoute
+  '/search': typeof SearchRoute
+  '/listings/$id': typeof ListingsIdRoute
+  '/messages/$id': typeof MessagesIdRoute
+  '/owner/listings': typeof OwnerListingsRoute
+  '/owner/new': typeof OwnerNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/messages'
+    | '/notifications'
+    | '/owner'
+    | '/profile'
+    | '/roommates'
+    | '/search'
+    | '/listings/$id'
+    | '/messages/$id'
+    | '/owner/listings'
+    | '/owner/new'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/messages'
+    | '/notifications'
+    | '/owner'
+    | '/profile'
+    | '/roommates'
+    | '/search'
+    | '/listings/$id'
+    | '/messages/$id'
+    | '/owner/listings'
+    | '/owner/new'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/messages'
+    | '/notifications'
+    | '/owner'
+    | '/profile'
+    | '/roommates'
+    | '/search'
+    | '/listings/$id'
+    | '/messages/$id'
+    | '/owner/listings'
+    | '/owner/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  MessagesRoute: typeof MessagesRouteWithChildren
+  NotificationsRoute: typeof NotificationsRoute
+  OwnerRoute: typeof OwnerRouteWithChildren
+  ProfileRoute: typeof ProfileRoute
+  RoommatesRoute: typeof RoommatesRoute
+  SearchRoute: typeof SearchRoute
+  ListingsIdRoute: typeof ListingsIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roommates': {
+      id: '/roommates'
+      path: '/roommates'
+      fullPath: '/roommates'
+      preLoaderRoute: typeof RoommatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/owner': {
+      id: '/owner'
+      path: '/owner'
+      fullPath: '/owner'
+      preLoaderRoute: typeof OwnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/messages': {
+      id: '/messages'
+      path: '/messages'
+      fullPath: '/messages'
+      preLoaderRoute: typeof MessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +241,71 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/owner/new': {
+      id: '/owner/new'
+      path: '/new'
+      fullPath: '/owner/new'
+      preLoaderRoute: typeof OwnerNewRouteImport
+      parentRoute: typeof OwnerRoute
+    }
+    '/owner/listings': {
+      id: '/owner/listings'
+      path: '/listings'
+      fullPath: '/owner/listings'
+      preLoaderRoute: typeof OwnerListingsRouteImport
+      parentRoute: typeof OwnerRoute
+    }
+    '/messages/$id': {
+      id: '/messages/$id'
+      path: '/$id'
+      fullPath: '/messages/$id'
+      preLoaderRoute: typeof MessagesIdRouteImport
+      parentRoute: typeof MessagesRoute
+    }
+    '/listings/$id': {
+      id: '/listings/$id'
+      path: '/listings/$id'
+      fullPath: '/listings/$id'
+      preLoaderRoute: typeof ListingsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface MessagesRouteChildren {
+  MessagesIdRoute: typeof MessagesIdRoute
+}
+
+const MessagesRouteChildren: MessagesRouteChildren = {
+  MessagesIdRoute: MessagesIdRoute,
+}
+
+const MessagesRouteWithChildren = MessagesRoute._addFileChildren(
+  MessagesRouteChildren,
+)
+
+interface OwnerRouteChildren {
+  OwnerListingsRoute: typeof OwnerListingsRoute
+  OwnerNewRoute: typeof OwnerNewRoute
+}
+
+const OwnerRouteChildren: OwnerRouteChildren = {
+  OwnerListingsRoute: OwnerListingsRoute,
+  OwnerNewRoute: OwnerNewRoute,
+}
+
+const OwnerRouteWithChildren = OwnerRoute._addFileChildren(OwnerRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  MessagesRoute: MessagesRouteWithChildren,
+  NotificationsRoute: NotificationsRoute,
+  OwnerRoute: OwnerRouteWithChildren,
+  ProfileRoute: ProfileRoute,
+  RoommatesRoute: RoommatesRoute,
+  SearchRoute: SearchRoute,
+  ListingsIdRoute: ListingsIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
