@@ -23,10 +23,36 @@ export type Listing = {
   images: string[];
   description: string;
   nearby: { name: string; distance: string; icon: string }[];
+  createdAt?: number;
 };
 
-const IMG = (seed: string, n = 1) =>
-  Array.from({ length: n }, (_, i) => `https://picsum.photos/seed/${seed}${i}/800/600`);
+// Real apartment / room photos from Unsplash, matched to listing type.
+const U = (id: string) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=70`;
+
+// Curated apartment interior photos
+const SETS = {
+  apt3room: [
+    U("1522708323590-d24dbb6b0267"), // bright living room
+    U("1556909114-f6e7ad7d3136"), // bedroom
+    U("1556911220-bff31c812dba"), // kitchen
+    U("1493809842364-78817add7ffb"), // student desk
+  ],
+  studio: [
+    U("1560448204-e02f11c3d0e2"), // small studio
+    U("1502672260266-1c1ef2d93688"), // minimal interior
+    U("1505691938895-1758d7feb511"), // cozy nook
+  ],
+  girlsRoom: [
+    U("1522444195799-478538b28823"), // bright bedroom
+    U("1540518614846-7eded433c457"), // study desk
+    U("1616594039964-ae9021a400a0"), // pastel room
+  ],
+  centralApt: [
+    U("1554995207-c18c203602cb"), // modern apartment
+    U("1484154218962-a197022b5858"), // kitchen
+    U("1517705008128-361805f42e86"), // hallway/room
+  ],
+};
 
 export const LISTINGS: Listing[] = [
   {
@@ -49,7 +75,7 @@ export const LISTINGS: Listing[] = [
     rating: 4.8,
     reviews: 32,
     owner: { name: "Rəşad Ə.", verified: true, responseMin: 12, avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Rashad" },
-    images: IMG("yasamal", 4),
+    images: SETS.apt3room,
     description:
       "Geniş, işıqlı 3 otaqlı mənzil. Tələbələr üçün ideal. Hər otaqda iş masası, yataq və şkaf mövcuddur.",
     nearby: [
@@ -79,7 +105,7 @@ export const LISTINGS: Listing[] = [
     rating: 4.6,
     reviews: 18,
     owner: { name: "Leyla H.", verified: true, responseMin: 25, avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Leyla" },
-    images: IMG("xetai", 3),
+    images: SETS.studio,
     description: "Tək nəfərlik studio. Tam mebelli, dərhal köçməyə hazırdır.",
     nearby: [
       { name: "BDU", distance: "1.2km", icon: "🎓" },
@@ -107,7 +133,7 @@ export const LISTINGS: Listing[] = [
     rating: 4.9,
     reviews: 45,
     owner: { name: "Nigar M.", verified: true, responseMin: 8, avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Nigar" },
-    images: IMG("nesimi", 3),
+    images: SETS.girlsRoom,
     description: "Yalnız qız tələbələr üçün. Təhlükəsiz, sakit ərazi.",
     nearby: [
       { name: "UNEC", distance: "600m", icon: "🎓" },
@@ -135,7 +161,7 @@ export const LISTINGS: Listing[] = [
     rating: 4.3,
     reviews: 11,
     owner: { name: "Elvin S.", verified: true, responseMin: 40, avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Elvin" },
-    images: IMG("nariman", 3),
+    images: SETS.centralApt,
     description: "Mərkəzi yerdə geniş mənzil.",
     nearby: [
       { name: "Khazar Uni", distance: "900m", icon: "🎓" },
@@ -143,6 +169,15 @@ export const LISTINGS: Listing[] = [
     ],
   },
 ];
+
+// Default photo pool for new listings — pick one that matches the type chosen
+export const STOCK_PHOTOS = {
+  "3 otaqlı": SETS.apt3room,
+  "2 otaqlı": SETS.centralApt,
+  "studio": SETS.studio,
+  "qızlar": SETS.girlsRoom,
+  "default": SETS.apt3room,
+};
 
 export type Roommate = {
   id: string;
