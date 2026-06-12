@@ -144,10 +144,10 @@ function SettingsSheet({ onClose, settings, setSettings }: { onClose: () => void
         <div className="w-12 h-1 bg-border rounded-full mx-auto mb-4"/>
         <h3 className="text-lg font-bold mb-4">Tənzimləmələr</h3>
         <div className="space-y-2">
-          <SettingToggle icon={<Bell size={16}/>} label="Push bildirişlər" desc="Yeni elanlar üçün bildir" on={settings.notifications} onChange={(v) => setSettings({notifications:v})}/>
-          <SettingToggle icon={<Mail size={16}/>} label="E-poçt xəbərdarlığı" desc="Həftəlik xülasə" on={settings.emailAlerts} onChange={(v) => setSettings({emailAlerts:v})}/>
-          <SettingToggle icon={<Heart size={16}/>} label="Yeni uyğunluq" desc="AI 90%+ tapanda" on={settings.newMatches} onChange={(v) => setSettings({newMatches:v})}/>
-          <SettingToggle icon={<Volume2 size={16}/>} label="Səs effektləri" desc="Mesaj və bildirişlər" on={settings.soundOn} onChange={(v) => setSettings({soundOn:v})}/>
+          <SettingToggle icon={<Bell size={16}/>} label="Push bildirişlər" desc="Yeni elanlar üçün bildir" on={settings.notifications} onChange={(v: boolean) => setSettings({notifications:v})}/>
+          <SettingToggle icon={<Mail size={16}/>} label="E-poçt xəbərdarlığı" desc="Həftəlik xülasə" on={settings.emailAlerts} onChange={(v: boolean) => setSettings({emailAlerts:v})}/>
+          <SettingToggle icon={<Heart size={16}/>} label="Yeni uyğunluq" desc="AI 90%+ tapanda" on={settings.newMatches} onChange={(v: boolean) => setSettings({newMatches:v})}/>
+          <SettingToggle icon={<Volume2 size={16}/>} label="Səs effektləri" desc="Mesaj və bildirişlər" on={settings.soundOn} onChange={(v: boolean) => setSettings({soundOn:v})}/>
         </div>
         <div className="mt-4 p-3 rounded-xl bg-secondary text-[11px] text-muted-foreground">
           🌐 Dil: <span className="font-bold text-foreground">Azərbaycan</span> (yeganə dəstəklənən dil)
