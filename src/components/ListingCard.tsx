@@ -32,7 +32,7 @@ export function ListingCard({ l, delay = 0 }: { l: Listing; delay?: number }) {
           {l.verified && <span className="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1"><ShieldCheck size={10}/>Verified</span>}
         </div>
         <button
-          onClick={(e) => { e.preventDefault(); setLiked(!liked); }}
+          onClick={(e) => { e.preventDefault(); const on = toggleFavorite(l.id); toast.success(on ? "Bəyəndilərə əlavə olundu ❤️" : "Bəyəndilərdən çıxarıldı"); }}
           className="absolute top-2 right-2 p-2 rounded-full bg-card/90 backdrop-blur press-scale"
         >
           <Heart size={16} className={liked ? "fill-rose-500 text-rose-500" : "text-foreground"} />
