@@ -2,8 +2,9 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { AppShell, TopBar } from "@/components/AppShell";
 import { getListing } from "@/lib/listings-store";
 import { BedDots } from "@/components/ListingCard";
+import { toggleFavorite, useIsFavorite } from "@/lib/favorites-store";
 import { ShieldCheck, Star, Wifi, Heart, Share2, MessageCircle, CalendarCheck, Lock } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/listings/$id")({
