@@ -19,7 +19,8 @@ function ListingDetail() {
   const [img, setImg] = useState(0);
   const [showReserve, setShowReserve] = useState(false);
   const [step, setStep] = useState(0);
-  const [liked, setLiked] = useState(false);
+  const liked = useIsFavorite(id);
+  const scrollerRef = useRef<HTMLDivElement>(null);
 
   if (!l) return <AppShell><div className="p-6 text-center">Elan tapılmadı</div></AppShell>;
 
@@ -35,24 +36,51 @@ function ListingDetail() {
     }
   };
 
+  const onScroll = () => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const i = Math.round(el.scrollLeft / el.clientWidth);
+    if (i !== img) setImg(i);
+  };
+
+  const goTo = (i: number) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.scrollTo({ left: i * el.clientWidth, behavior: "smooth" });
+  };
+
   return (
     <AppShell>
       <TopBar back title="Elan" right={
         <div className="flex gap-1">
           <button onClick={share} className="p-2 rounded-xl bg-secondary press-scale hover:bg-primary/10 transition"><Share2 size={16}/></button>
-          <button onClick={() => { setLiked(!liked); toast.success(liked ? "Bəyəndiklərdən çıxarıldı" : "Bəyəndilərə əlavə edildi"); }} className="p-2 rounded-xl bg-secondary press-scale hover:bg-rose-500/10 transition">
+          <button onClick={() => { const on = toggleFavorite(id); toast.success(on ? "Bəyəndilərə əlavə olundu ❤️" : "Bəyəndilərdən çıxarıldı"); }} className="p-2 rounded-xl bg-secondary press-scale hover:bg-rose-500/10 transition">
             <Heart size={16} className={liked ? "fill-rose-500 text-rose-500" : ""}/>
           </button>
         </div>
       }/>
       <div className="relative aspect-[4/3] bg-muted">
-        <img src={l.images[img]} alt={l.title} className="w-full h-full object-cover animate-fade-in" key={img}/>
+        <div
+          ref={scrollerRef}
+          onScroll={onScroll}
+          className="w-full h-full flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth"
+        >
+          {l.images.map((src, i) => (
+            <div key={i} className="w-full h-full shrink-0 snap-center">
+              <img src={src} alt={`${l.title} ${i+1}`} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"}/>
+            </div>
+          ))}
+        </div>
+        <div className="absolute top-3 right-3 bg-black/60 text-white text-[11px] px-2.5 py-1 rounded-full backdrop-blur">
+          {img + 1} / {l.images.length}
+        </div>
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
           {l.images.map((_, i) => (
-            <button key={i} onClick={() => setImg(i)} className={`h-1.5 rounded-full transition-all ${i === img ? "bg-white w-6" : "bg-white/50 w-1.5"}`}/>
+            <button key={i} onClick={() => goTo(i)} className={`h-1.5 rounded-full transition-all ${i === img ? "bg-white w-6" : "bg-white/50 w-1.5"}`}/>
           ))}
         </div>
       </div>
+
 
       <div className="px-4 pt-4 animate-fade-in">
         <div className="flex items-start justify-between gap-3">
