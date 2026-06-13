@@ -99,7 +99,7 @@ export const LISTINGS: Listing[] = [
     premium: true,
     rating: 4.8,
     reviews: 32,
-    owner: { name: "Rəşad Ə.", verified: true, responseMin: 12, avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Rashad" },
+    owner: { name: "Rəşad Ə.", verified: true, responseMin: 12, avatar: PEOPLE.rashad },
     images: SETS.apt3room,
     description:
       "Geniş, işıqlı 3 otaqlı mənzil. Tələbələr üçün ideal. Hər otaqda iş masası, yataq və şkaf mövcuddur.",
@@ -129,7 +129,7 @@ export const LISTINGS: Listing[] = [
     premium: false,
     rating: 4.6,
     reviews: 18,
-    owner: { name: "Leyla H.", verified: true, responseMin: 25, avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Leyla" },
+    owner: { name: "Leyla H.", verified: true, responseMin: 25, avatar: PEOPLE.leyla },
     images: SETS.studio,
     description: "Tək nəfərlik studio. Tam mebelli, dərhal köçməyə hazırdır.",
     nearby: [
@@ -157,7 +157,7 @@ export const LISTINGS: Listing[] = [
     premium: false,
     rating: 4.9,
     reviews: 45,
-    owner: { name: "Nigar M.", verified: true, responseMin: 8, avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Nigar" },
+    owner: { name: "Nigar M.", verified: true, responseMin: 8, avatar: PEOPLE.nigar },
     images: SETS.girlsRoom,
     description: "Yalnız qız tələbələr üçün. Təhlükəsiz, sakit ərazi.",
     nearby: [
@@ -185,7 +185,7 @@ export const LISTINGS: Listing[] = [
     premium: false,
     rating: 4.3,
     reviews: 11,
-    owner: { name: "Elvin S.", verified: true, responseMin: 40, avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Elvin" },
+    owner: { name: "Elvin S.", verified: true, responseMin: 40, avatar: PEOPLE.elvin },
     images: SETS.centralApt,
     description: "Mərkəzi yerdə geniş mənzil.",
     nearby: [
@@ -240,7 +240,7 @@ export type ChatThread = {
 
 export const THREADS: ChatThread[] = [
   {
-    id: "t1", name: "Rəşad Ə. (Ev sahibi)", avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Rashad",
+    id: "t1", name: "Rəşad Ə. (Ev sahibi)", avatar: PEOPLE.rashad,
     lastMessage: "Bəli, sabah saat 15:00-da uyğundur 👍", unread: 2, time: "12:34", online: true,
     messages: [
       { id: "m1", from: "them", text: "Salam, Yasamal elanı üçün maraqlanırsınız?", time: "12:30" },
@@ -249,7 +249,7 @@ export const THREADS: ChatThread[] = [
     ],
   },
   {
-    id: "t2", name: "Kamran Q. (95% uyğun)", avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Kamran",
+    id: "t2", name: "Kamran Q. (95% uyğun)", avatar: PEOPLE.kamran,
     lastMessage: "Razıyam, gəlin tanış olaq", unread: 0, time: "Dünən", online: false,
     messages: [
       { id: "m1", from: "me", text: "Salam, otaq yoldaşı kimi maraqlanırsan?", time: "Dünən" },
@@ -257,7 +257,7 @@ export const THREADS: ChatThread[] = [
     ],
   },
   {
-    id: "t3", name: "Leyla H. (Ev sahibi)", avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Leyla",
+    id: "t3", name: "Leyla H. (Ev sahibi)", avatar: PEOPLE.leyla,
     lastMessage: "Şəkilləri göndərdim", unread: 0, time: "Çər", online: true,
     messages: [
       { id: "m1", from: "them", text: "Şəkilləri göndərdim", time: "Çər" },
