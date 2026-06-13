@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { type Listing } from "@/lib/mock-data";
 import { Heart, MapPin, ShieldCheck, Star, Zap } from "lucide-react";
-import { useState } from "react";
+import { toggleFavorite, useIsFavorite } from "@/lib/favorites-store";
+import { toast } from "sonner";
 
 export function BedDots({ beds }: { beds: Listing["beds"] }) {
   const map = { free: "bg-emerald-500", reserved: "bg-amber-500", taken: "bg-rose-500" } as const;
