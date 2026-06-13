@@ -220,10 +220,10 @@ export type Roommate = {
 };
 
 export const ROOMMATES: Roommate[] = [
-  { id: "r1", name: "Kamran Quliyev", age: 20, university: "ADA", course: "3-cü kurs", avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Kamran", sleep: "Tez yatan", cleanliness: "Çox təmiz", smoking: false, pets: false, bio: "Sakit, məsuliyyətli, idmançı.", compatibility: 95 },
-  { id: "r2", name: "Tural Hüseynov", age: 22, university: "BDU", course: "Magistr 1", avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Tural", sleep: "Gec yatan", cleanliness: "Orta", smoking: false, pets: true, bio: "IT tələbəsiyəm, oyun oynamağı sevirəm.", compatibility: 88 },
-  { id: "r3", name: "Orxan Babayev", age: 21, university: "UNEC", course: "4-cü kurs", avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Orxan", sleep: "Orta", cleanliness: "Təmiz", smoking: true, pets: false, bio: "İqtisad tələbəsi, kitab oxumağı sevirəm.", compatibility: 73 },
-  { id: "r4", name: "Cavid Əliyev", age: 19, university: "ADA", course: "2-ci kurs", avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Cavid", sleep: "Tez yatan", cleanliness: "Çox təmiz", smoking: false, pets: false, bio: "Sakit həyat tərzi sevirəm.", compatibility: 91 },
+  { id: "r1", name: "Kamran Quliyev", age: 20, university: "ADA", course: "3-cü kurs", avatar: PEOPLE.kamran, sleep: "Tez yatan", cleanliness: "Çox təmiz", smoking: false, pets: false, bio: "Sakit, məsuliyyətli, idmançı.", compatibility: 95 },
+  { id: "r2", name: "Tural Hüseynov", age: 22, university: "BDU", course: "Magistr 1", avatar: PEOPLE.tural, sleep: "Gec yatan", cleanliness: "Orta", smoking: false, pets: true, bio: "IT tələbəsiyəm, oyun oynamağı sevirəm.", compatibility: 88 },
+  { id: "r3", name: "Orxan Babayev", age: 21, university: "UNEC", course: "4-cü kurs", avatar: PEOPLE.orxan, sleep: "Orta", cleanliness: "Təmiz", smoking: true, pets: false, bio: "İqtisad tələbəsi, kitab oxumağı sevirəm.", compatibility: 73 },
+  { id: "r4", name: "Cavid Əliyev", age: 19, university: "ADA", course: "2-ci kurs", avatar: PEOPLE.cavid, sleep: "Tez yatan", cleanliness: "Çox təmiz", smoking: false, pets: false, bio: "Sakit həyat tərzi sevirəm.", compatibility: 91 },
 ];
 
 export type ChatMessage = { id: string; from: "me" | "them"; text: string; time: string };
