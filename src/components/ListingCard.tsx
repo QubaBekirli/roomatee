@@ -16,7 +16,7 @@ export function BedDots({ beds }: { beds: Listing["beds"] }) {
 }
 
 export function ListingCard({ l, delay = 0 }: { l: Listing; delay?: number }) {
-  const [liked, setLiked] = useState(false);
+  const liked = useIsFavorite(l.id);
   const free = l.beds.filter((b) => b === "free").length;
   return (
     <Link
