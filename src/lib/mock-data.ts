@@ -29,29 +29,54 @@ export type Listing = {
 // Real apartment / room photos from Unsplash, matched to listing type.
 const U = (id: string) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=70`;
 
-// Curated apartment interior photos
+// Curated apartment interior photos (richer galleries)
 const SETS = {
   apt3room: [
-    U("1522708323590-d24dbb6b0267"), // bright living room
-    U("1556909114-f6e7ad7d3136"), // bedroom
-    U("1556911220-bff31c812dba"), // kitchen
-    U("1493809842364-78817add7ffb"), // student desk
+    U("1522708323590-d24dbb6b0267"),
+    U("1556909114-f6e7ad7d3136"),
+    U("1556911220-bff31c812dba"),
+    U("1493809842364-78817add7ffb"),
+    U("1567016432779-094069958ea5"),
+    U("1505691938895-1758d7feb511"),
+    U("1560185007-c5ca9d2c014d"),
   ],
   studio: [
-    U("1560448204-e02f11c3d0e2"), // small studio
-    U("1502672260266-1c1ef2d93688"), // minimal interior
-    U("1505691938895-1758d7feb511"), // cozy nook
+    U("1560448204-e02f11c3d0e2"),
+    U("1502672260266-1c1ef2d93688"),
+    U("1505691938895-1758d7feb511"),
+    U("1522771739844-6a9f6d5f14af"),
+    U("1554995207-c18c203602cb"),
+    U("1505693416388-ac5ce068fe85"),
   ],
   girlsRoom: [
-    U("1522444195799-478538b28823"), // bright bedroom
-    U("1540518614846-7eded433c457"), // study desk
-    U("1616594039964-ae9021a400a0"), // pastel room
+    U("1522444195799-478538b28823"),
+    U("1540518614846-7eded433c457"),
+    U("1616594039964-ae9021a400a0"),
+    U("1558211583-d26f610c1eb1"),
+    U("1616137466211-f939a420be84"),
   ],
   centralApt: [
-    U("1554995207-c18c203602cb"), // modern apartment
-    U("1484154218962-a197022b5858"), // kitchen
-    U("1517705008128-361805f42e86"), // hallway/room
+    U("1554995207-c18c203602cb"),
+    U("1484154218962-a197022b5858"),
+    U("1517705008128-361805f42e86"),
+    U("1560185007-c5ca9d2c014d"),
+    U("1502005229762-cf1b2da7c5d6"),
+    U("1493809842364-78817add7ffb"),
   ],
+};
+
+// Real human portrait photos (Unsplash) — used for roommate cards & chat avatars
+const P = (id: string) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=400&q=70`;
+export const PEOPLE = {
+  kamran: P("1500648767791-00dcc994a43e"),
+  tural: P("1507003211169-0a1dd7228f2d"),
+  orxan: P("1506794778202-cad84cf45f1d"),
+  cavid: P("1539571696357-5a69c17a67c6"),
+  aysel: P("1494790108377-be9c29b29330"),
+  leyla: P("1517841905240-472988babdf9"),
+  nigar: P("1438761681033-6461ffad8d80"),
+  rashad: P("1472099645785-5658abf4ff4e"),
+  elvin: P("1463453091185-61582044d556"),
 };
 
 export const LISTINGS: Listing[] = [
