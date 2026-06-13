@@ -69,5 +69,10 @@ export function useAuth() {
       window.removeEventListener("storage", h);
     };
   }, []);
-  return { user, ready, logout: () => setUser(null) };
+  const updateUser = (patch: Partial<User>) => {
+    const curr = getUser();
+    if (!curr) return;
+    setUser({ ...curr, ...patch });
+  };
+  return { user, ready, logout: () => setUser(null), updateUser };
 }
