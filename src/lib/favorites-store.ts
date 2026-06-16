@@ -21,7 +21,7 @@ export function toggleFavorite(id: string) {
 }
 
 export function useFavorites() {
-  const [ids, setIds] = useState<string[]>(() => read());
+  const [ids, setIds] = useState<string[]>([]);
   useEffect(() => {
     const h = () => setIds(read());
     window.addEventListener(EVT, h);
