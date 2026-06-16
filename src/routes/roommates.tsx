@@ -37,13 +37,7 @@ function RoommatesPage() {
             </div>
           </div>
           <div className="p-5">
-            <div className="flex items-end justify-between">
-              <div>
-                <h2 className="text-xl font-bold">{r.name}, {r.age}</h2>
-                <p className="text-sm text-muted-foreground">{r.university} · {r.course}</p>
-              </div>
-            </div>
-            <p className="text-sm mt-3 text-muted-foreground">{r.bio}</p>
+            <p className="text-sm text-muted-foreground">{r.bio}</p>
 
             <div className="grid grid-cols-2 gap-2 mt-4">
               <Trait k="🌙 Yuxu" v={r.sleep}/>
