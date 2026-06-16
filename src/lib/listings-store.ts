@@ -71,7 +71,7 @@ export function deleteListing(id: string) {
 }
 
 export function useListings() {
-  const [list, setList] = useState<Listing[]>(() => getAllListings());
+  const [list, setList] = useState<Listing[]>(LISTINGS);
   useEffect(() => {
     const h = () => setList(getAllListings());
     window.addEventListener(EVT, h);
@@ -86,7 +86,7 @@ export function useListings() {
 }
 
 export function useUserListings() {
-  const [list, setList] = useState<Listing[]>(() => readUser());
+  const [list, setList] = useState<Listing[]>([]);
   useEffect(() => {
     const h = () => setList(readUser());
     window.addEventListener(EVT, h);
