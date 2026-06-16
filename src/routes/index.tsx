@@ -13,16 +13,17 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const QUICK = [
-  { icon: Zap, label: "Təcili", color: "bg-rose-500/10 text-rose-500", filter: "urgent" },
-  { icon: ShieldCheck, label: "Doğrulanmış", color: "bg-emerald-500/10 text-emerald-500", filter: "verified" },
-  { icon: Users, label: "Yoldaş", color: "bg-primary/10 text-primary", filter: "roommate" },
-  { icon: Sparkles, label: "Premium", color: "bg-accent/15 text-accent", filter: "premium" },
+const QUICK_DEFS = [
+  { icon: Zap, key: "urgent" as const, color: "bg-rose-500/10 text-rose-500" },
+  { icon: ShieldCheck, key: "verified" as const, color: "bg-emerald-500/10 text-emerald-500" },
+  { icon: Users, key: "roommate" as const, color: "bg-primary/10 text-primary" },
+  { icon: Sparkles, key: "premium" as const, color: "bg-accent/15 text-accent" },
 ];
 
 const DISTRICTS = ["Hamısı", "Yasamal", "Xətai", "Nəsimi", "Nərimanov", "Səbail"];
 
 function HomePage() {
+  const t = useT();
   const { user } = useAuth();
   const listings = useListings();
   const [district, setDistrict] = useState("Hamısı");
