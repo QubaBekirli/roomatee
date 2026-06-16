@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { Home, Search, MessageCircle, Bell, User, LayoutDashboard, Building2, Users } from "lucide-react";
 import { useAuth } from "@/lib/auth-store";
+import { useT } from "@/lib/settings-store";
 import { useEffect, type ReactNode } from "react";
 import logo from "@/assets/roomate-logo.asset.json";
 
