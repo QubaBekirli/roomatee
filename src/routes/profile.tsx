@@ -116,9 +116,6 @@ function ProfilePage() {
         <div className="mt-4 divide-y divide-border bg-card rounded-2xl border border-border overflow-hidden">
           <Row icon={<FileText size={16}/>} label="Sənədlərim" badge="2" onClick={() => setOpenDocs(true)}/>
           <Row icon={<Heart size={16}/>} label="Bəyəndiklərim" badge={String(favIds.length)} onClick={() => setOpenFavs(true)}/>
-          <Row icon={<Bell size={16}/>} label="Bildirişlər" onClick={() => navigate({to:"/notifications"})}/>
-          <Row icon={<Settings size={16}/>} label="Tənzimləmələr" onClick={() => setOpenSettings(true)}/>
-          <ToggleRow icon={<Moon size={16}/>} label="Qaranlıq rejim" on={settings.dark} onChange={(v) => { setSettings({ dark: v }); toast.success(v ? "Qaranlıq rejim aktiv" : "İşıqlı rejim aktiv"); }}/>
         </div>
 
         {user.role === "owner" && (
@@ -229,8 +226,13 @@ function SettingsSheet({ onClose, settings, setSettings }: { onClose: () => void
         <SettingToggle icon={<Volume2 size={16}/>} label="Səs effektləri" desc="Mesaj və bildirişlər" on={settings.soundOn} onChange={(v: boolean) => setSettings({soundOn:v})}/>
         <SettingToggle icon={<Moon size={16}/>} label="Qaranlıq rejim" desc="Gecə görünüşü" on={settings.dark} onChange={(v: boolean) => setSettings({dark:v})}/>
       </div>
-      <div className="mt-4 p-3 rounded-xl bg-secondary text-[11px] text-muted-foreground">
-        🌐 Dil: <span className="font-bold text-foreground">Azərbaycan</span> (yeganə dəstəklənən dil)
+      <div className="mt-4">
+        <p className="text-xs font-semibold text-muted-foreground mb-2">🌐 Dil / Language / Язык</p>
+        <div className="grid grid-cols-3 gap-2">
+          {([["az","🇦🇿 Azərbaycan"],["en","🇬🇧 English"],["ru","🇷🇺 Русский"]] as const).map(([code,label]) => (
+            <button key={code} onClick={() => { setSettings({ lang: code }); toast.success(label); }} className={`py-2.5 rounded-xl text-xs font-semibold border-2 transition press-scale ${settings.lang===code?"border-primary bg-primary/5 text-primary":"border-border text-muted-foreground"}`}>{label}</button>
+          ))}
+        </div>
       </div>
       <button onClick={onClose} className="w-full mt-4 py-3 rounded-xl bg-primary text-white font-bold press-scale">Bağla</button>
     </Sheet>

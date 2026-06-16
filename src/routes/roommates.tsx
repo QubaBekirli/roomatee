@@ -24,21 +24,20 @@ function RoommatesPage() {
       <TopBar title="Otaq yoldaşı" right={<span className="text-[10px] font-bold bg-primary/10 text-primary px-2 py-1 rounded-full flex items-center gap-1"><Sparkles size={10}/>AI Match</span>}/>
 
       <div className="px-4 pt-3">
-        <div className="bg-card rounded-3xl border border-border overflow-hidden animate-scale-in" key={r.id}>
-          <div className="relative h-72 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-            <img src={r.avatar} alt={r.name} className="w-44 h-44"/>
-            <div className="absolute top-3 right-3 bg-black/70 backdrop-blur text-white px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1">
+        <div className="bg-card rounded-3xl border border-border overflow-hidden animate-scale-in shadow-lg" key={r.id}>
+          <div className="relative h-96 bg-secondary">
+            <img src={r.avatar} alt={r.name} className="absolute inset-0 w-full h-full object-cover"/>
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 to-transparent"/>
+            <div className="absolute top-3 right-3 bg-black/70 backdrop-blur text-white px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1 animate-bounce-in">
               <Sparkles size={12} className="text-accent"/> {r.compatibility}% uyğun
+            </div>
+            <div className="absolute bottom-3 left-4 right-4 text-white">
+              <h2 className="text-2xl font-bold drop-shadow-lg">{r.name}, {r.age}</h2>
+              <p className="text-xs opacity-90 drop-shadow">{r.university} · {r.course}</p>
             </div>
           </div>
           <div className="p-5">
-            <div className="flex items-end justify-between">
-              <div>
-                <h2 className="text-xl font-bold">{r.name}, {r.age}</h2>
-                <p className="text-sm text-muted-foreground">{r.university} · {r.course}</p>
-              </div>
-            </div>
-            <p className="text-sm mt-3 text-muted-foreground">{r.bio}</p>
+            <p className="text-sm text-muted-foreground">{r.bio}</p>
 
             <div className="grid grid-cols-2 gap-2 mt-4">
               <Trait k="🌙 Yuxu" v={r.sleep}/>
