@@ -116,9 +116,6 @@ function ProfilePage() {
         <div className="mt-4 divide-y divide-border bg-card rounded-2xl border border-border overflow-hidden">
           <Row icon={<FileText size={16}/>} label="Sənədlərim" badge="2" onClick={() => setOpenDocs(true)}/>
           <Row icon={<Heart size={16}/>} label="Bəyəndiklərim" badge={String(favIds.length)} onClick={() => setOpenFavs(true)}/>
-          <Row icon={<Bell size={16}/>} label="Bildirişlər" onClick={() => navigate({to:"/notifications"})}/>
-          <Row icon={<Settings size={16}/>} label="Tənzimləmələr" onClick={() => setOpenSettings(true)}/>
-          <ToggleRow icon={<Moon size={16}/>} label="Qaranlıq rejim" on={settings.dark} onChange={(v) => { setSettings({ dark: v }); toast.success(v ? "Qaranlıq rejim aktiv" : "İşıqlı rejim aktiv"); }}/>
         </div>
 
         {user.role === "owner" && (
