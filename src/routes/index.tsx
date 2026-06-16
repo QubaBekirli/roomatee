@@ -3,6 +3,8 @@ import { AppShell, BrandMark } from "@/components/AppShell";
 import { useAuth } from "@/lib/auth-store";
 import { useListings } from "@/lib/listings-store";
 import { ListingCard } from "@/components/ListingCard";
+import { HomeAIChat } from "@/components/HomeAIChat";
+import { useT } from "@/lib/settings-store";
 import { Bell, Search, Sparkles, Zap, ShieldCheck, Users, MapPin, TrendingUp } from "lucide-react";
 import { useEffect, useState } from "react";
 
