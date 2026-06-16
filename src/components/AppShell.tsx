@@ -18,6 +18,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const { user, ready } = useAuth();
   const navigate = useNavigate();
   const loc = useLocation();
+  const t = useT();
 
   useEffect(() => {
     if (ready && !user && loc.pathname !== "/auth") {
@@ -28,18 +29,18 @@ export function AppShell({ children }: { children: ReactNode }) {
   if (!ready || !user) return <>{children}</>;
 
   const studentNav = [
-    { to: "/", label: "Ana", icon: Home },
-    { to: "/search", label: "Axtar", icon: Search },
-    { to: "/roommates", label: "Yoldaş", icon: Users },
-    { to: "/messages", label: "Mesaj", icon: MessageCircle },
-    { to: "/profile", label: "Profil", icon: User },
+    { to: "/", label: t("nav_home"), icon: Home },
+    { to: "/search", label: t("nav_search"), icon: Search },
+    { to: "/roommates", label: t("nav_roommate"), icon: Users },
+    { to: "/messages", label: t("nav_messages"), icon: MessageCircle },
+    { to: "/profile", label: t("nav_profile"), icon: User },
   ];
   const ownerNav = [
     { to: "/owner", label: "Panel", icon: LayoutDashboard },
     { to: "/owner/listings", label: "Elanlar", icon: Building2 },
-    { to: "/messages", label: "Mesaj", icon: MessageCircle },
+    { to: "/messages", label: t("nav_messages"), icon: MessageCircle },
     { to: "/notifications", label: "Bildiriş", icon: Bell },
-    { to: "/profile", label: "Profil", icon: User },
+    { to: "/profile", label: t("nav_profile"), icon: User },
   ];
   const nav = user.role === "student" ? studentNav : ownerNav;
 
