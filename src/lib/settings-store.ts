@@ -24,7 +24,7 @@ function read(): Settings {
 }
 
 export function useSettings() {
-  const [s, setS] = useState<Settings>(() => read());
+  const [s, setS] = useState<Settings>(DEFAULTS);
   useEffect(() => {
     const r = read();
     setS(r);
