@@ -52,37 +52,39 @@ function HomePage() {
           </Link>
         </div>
         <div className="mt-4">
-          <p className="text-sm text-muted-foreground">Salam, {user?.name?.split(" ")[0]} 👋</p>
-          <h2 className="text-2xl font-bold leading-tight">Yeni evini <span className="text-primary">tap</span></h2>
+          <p className="text-sm text-muted-foreground">{t("hi")}, {user?.name?.split(" ")[0]} 👋</p>
+          <h2 className="text-2xl font-bold leading-tight">{t("find_new_home")} <span className="text-primary">{t("find")}</span></h2>
           <div className="flex items-center gap-1.5 mt-2 text-[11px] text-muted-foreground">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-dot"/>
-            <span className="font-semibold text-emerald-600">{liveCount}</span> tələbə online · son saatda <span className="font-semibold text-primary">+{Math.floor(liveCount/30)}</span> yeni elan
+            <span className="font-semibold text-emerald-600">{liveCount}</span> {t("online_now")} · +{Math.floor(liveCount/30)}
           </div>
         </div>
 
         <Link to="/search" className="mt-3 flex items-center gap-2 bg-card border border-border rounded-2xl px-4 py-3 hover-lift press-scale transition-all hover:border-primary/50">
           <Search size={18} className="text-muted-foreground" />
-          <span className="text-sm text-muted-foreground flex-1">Şəhər, rayon və ya universitet axtar...</span>
+          <span className="text-sm text-muted-foreground flex-1 truncate">{t("search_ph")}</span>
           <span className="text-[10px] bg-primary/10 text-primary font-semibold px-2 py-0.5 rounded-full">AI</span>
         </Link>
 
         <div className="grid grid-cols-4 gap-2 mt-4">
-          {QUICK.map((q, i) => {
-            const active = quick === q.filter;
+          {QUICK_DEFS.map((q, i) => {
+            const active = quick === q.key;
             return (
               <button
-                key={q.label}
-                onClick={() => setQuick(active ? null : q.filter)}
+                key={q.key}
+                onClick={() => setQuick(active ? null : q.key)}
                 className={`flex flex-col items-center gap-1.5 p-3 rounded-2xl border press-scale hover-lift animate-slide-up transition-all ${active ? "border-primary bg-primary/5" : "border-border bg-card"}`}
                 style={{ animationDelay: `${i * 60}ms` }}
               >
                 <div className={`p-2 rounded-xl transition-transform ${active ? "scale-110" : ""} ${q.color}`}><q.icon size={18} /></div>
-                <span className="text-[10px] font-semibold">{q.label}</span>
+                <span className="text-[10px] font-semibold">{t(q.key as any)}</span>
               </button>
             );
           })}
         </div>
       </div>
+
+      <HomeAIChat />
 
       {/* Urgent banner — solid color, no gradient */}
       <div className="mx-4 mt-4 rounded-2xl bg-primary p-4 text-white relative overflow-hidden animate-scale-in">
